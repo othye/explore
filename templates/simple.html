@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Files Explorer(PHP)</title>
+
+        <link rel="icon" type="image/png" href="asset/img/myicon.png"/>
+        <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet"> 
+
+        <link rel="stylesheet" href="asset/css/style.css">
+        <link rel="stylesheet" href="asset/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+    </head>
+    <body>
+
+        <div class="container">
+
+            <header class="text-center" >
+                <img class='logo' src='asset/img/files_explore.png'>
+                <!-- <h1 class="text-logo">File Explorer </h1> -->
+            </header>
+            
+
+            <section class="content">
+                <div class="table-responsive">
+
+                    <form  method="get">
+
+                        <legend class="link">
+                            <h2 class="mylink">                        
+                                <i class="fa fa-folder-open" aria-hidden="true"></i>  
+                                
+                                {% for item in getMylink %}
+                                    
+                                    <a href="?data={{ item.path }}&view={{ view }}"> | {{ item.name }}</a>
+                                    
+                                {% endfor %}
+                                <hr>
+                            </h2> 
+                            
+                            <div class="view">
+                                <a  href="index.php?data={{folder}}view=true"><img class='icons-v' src='asset/img/simple.png' alt="simple view"></a>
+                                <a  href="index.php?data={{folder}}"><img class='icons-v' src='asset/img/detail.png' alt="detail view"></a>
+                            </div>
+                        
+                        </legend>
+                        <div class="mydata">
+                            <section class="viewSimple">
+
+                                {% for data in mydata %}
+                                    
+                                    {% if data.type == true %}
+                                        
+                                        <div class="myfile">
+                                            <img class='icons-f' src='asset/img/folder.png'>
+                                            <a href="?data={{data.path}}&view={{ view }}">{{ data.filename }}</a>
+                                        </div>
+                                            
+                                    {% else %}
+                                        
+                                        <div class="myfile">
+                                            <img class='icons-f' src='asset/img/{{ data.icon }}.png'>
+                                            <a href="{{data.path}}" download>{{ data.filename }}   <i class="fas fa-download"></i></a>
+                                        </div>                                     
+                                            
+                                        
+                                    {% endif %}
+                                            
+                                {% endfor %}
+
+                            </section>
+                        </div>
+                    </form>
+                </section>
+                
+            <footer>
+                
+                <span>© 2018 Otmane</span>
+                
+            </footer>
+
+        </div>
+        
+        
+        
+    </body>
+</html>

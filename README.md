@@ -14,8 +14,6 @@ Projet de groupe : Explorateur de fichier en php
 collaborateurs :
 
     - Otmane EZ-ZIANI
-    - Pierre HERMEY
-    - Rasha YOUNES
 
 
 
